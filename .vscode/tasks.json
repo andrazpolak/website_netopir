@@ -1,0 +1,37 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    // Git - pre-commit
+    {
+      "label": "preCommit- install",
+      "detail": "Install pre-commit hooks from .pre-commit-config.yaml to .git hooks.",
+      "type": "shell",
+      "command": "pre-commit install"
+    },
+    {
+      "label": "preCommit- run all",
+      "detail": "Run pre-commit hooks described in .pre-commit-config.yaml",
+      "type": "shell",
+      "command": "pre-commit run --all-files"
+    },
+
+    {
+      "label": "Docekr buildx - backend - build (DockerHub) --push",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/backend/"
+      },
+      "command": "docker buildx build -f Dockerfile.prod --platform=linux/amd64,linux/arm64 -t andrazpolak/kds-measurement-backend:0.0.1 --push ."
+    },
+    {
+      "label": "Docekr buildx - frontend - build (DockerHub) --push",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/frontend/"
+      },
+      "command": "docker buildx build -f Dockerfile.prod --platform=linux/amd64,linux/arm64 -t andrazpolak/kds-measurement-dashboard:0.0.1 --push ."
+    }
+  ]
+}

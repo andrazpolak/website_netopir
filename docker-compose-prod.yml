@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  frontend:
+    image: website-netopir
+    build:
+      context: ./website-netopir
+      dockerfile: Dockerfile.prod
+    ports:
+      - 3000:80
+    stdin_open: true
+    environment:
+      - ENVIRONMENT=production
+    networks:
+      - network_main
+
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5" # number of files or file count
+        max-size: "10m" # file size
+
+networks:
+  network_main:
+    external: true
