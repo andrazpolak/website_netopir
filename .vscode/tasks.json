@@ -16,22 +16,13 @@
       "type": "shell",
       "command": "pre-commit run --all-files"
     },
-
     {
-      "label": "Docekr buildx - backend - build (DockerHub) --push",
+      "label": "Docekr buildx - website-netopir (DockerHub)",
       "type": "shell",
       "options": {
-        "cwd": "${workspaceFolder}/backend/"
+        "cwd": "${workspaceFolder}/website-netopir/"
       },
-      "command": "docker buildx build -f Dockerfile.prod --platform=linux/amd64,linux/arm64 -t andrazpolak/kds-measurement-backend:0.0.1 --push ."
-    },
-    {
-      "label": "Docekr buildx - frontend - build (DockerHub) --push",
-      "type": "shell",
-      "options": {
-        "cwd": "${workspaceFolder}/frontend/"
-      },
-      "command": "docker buildx build -f Dockerfile.prod --platform=linux/amd64,linux/arm64 -t andrazpolak/kds-measurement-dashboard:0.0.1 --push ."
+      "command": "docker buildx build -f Dockerfile.prod --platform=linux/amd64,linux/arm64 -t andrazpolak/website-netopir:0.0.1 --push ."
     }
   ]
 }
